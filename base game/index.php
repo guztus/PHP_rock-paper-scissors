@@ -9,13 +9,15 @@ $paper = new Element('Paper');
 $scissors = new Element('Scissors');
 $lizard = new Element('Lizard');
 $spock = new Element('Spock');
+$dynamite = new Element('Dynamite');
 
 $elements = [
     $rock,
     $paper,
     $scissors,
     $lizard,
-    $spock
+    $spock,
+    $dynamite
 ];
 
 $rock->setBeats($scissors, $lizard);
@@ -23,6 +25,7 @@ $paper->setBeats($rock, $spock);
 $scissors->setBeats($paper, $lizard);
 $spock->setBeats($rock, $scissors);
 $lizard->setBeats($paper, $spock);
+$dynamite->setBeats($rock, $paper, $scissors, $lizard, $spock);
 
 $player1Name = (string)readline("Enter your name: ");
 while (true) {
@@ -50,7 +53,7 @@ while (true) {
 
     $winner = $game->getWinner();
     if ($winner == null) {
-        echo "The game is a tie!" . PHP_EOL;
+        echo "The game is a tie!" . PHP_EOL . PHP_EOL;
         continue;
     }
     echo "{$winner->getName()} wins with {$winner->getElement()->getName()}" . PHP_EOL . PHP_EOL;
